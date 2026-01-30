@@ -18,47 +18,47 @@ export interface Product {
 }
 
 export const product: Product = {
-  id: "speaker-premium-01",
-  name: "SoundWave Pro",
-  tagline: "Som que transforma ambientes",
-  description: "Experimente a excelência sonora com o SoundWave Pro. Design elegante, áudio premium de 360° e bateria que dura o dia inteiro. A combinação perfeita de tecnologia e sofisticação para quem não aceita menos que o extraordinário.",
-  price: 599.90,
-  originalPrice: 899.90,
+  id: "podocare-pro-01",
+  name: "PodoCare Pro",
+  tagline: "Pés perfeitos em minutos",
+  description: "O removedor de calosidades elétrico mais avançado do mercado. Tecnologia profissional de spa em casa, com lixas intercambiáveis e motor silencioso. Resultados visíveis desde a primeira aplicação para pés macios e saudáveis.",
+  price: 189.90,
+  originalPrice: 299.90,
   images: [],
   features: [
     {
-      icon: "volume-2",
-      title: "Som 360° Imersivo",
-      description: "Tecnologia de dispersão sonora que preenche todo o ambiente com qualidade cristalina."
+      icon: "sparkles",
+      title: "Remoção Profissional",
+      description: "Lixas de cristal de alta precisão que removem calosidades sem agredir a pele saudável."
     },
     {
       icon: "battery-full",
-      title: "24h de Bateria",
-      description: "Uma carga completa para acompanhar você o dia inteiro, sem interrupções."
+      title: "Bateria de Longa Duração",
+      description: "Até 45 minutos de uso contínuo com apenas 2 horas de carregamento USB-C."
     },
     {
-      icon: "bluetooth",
-      title: "Conexão Bluetooth 5.3",
-      description: "Pareamento instantâneo e conexão estável até 15 metros de distância."
+      icon: "volume-x",
+      title: "Motor Silencioso",
+      description: "Tecnologia de motor brushless ultra silencioso para uma experiência relaxante."
     },
     {
       icon: "droplets",
-      title: "Resistente à Água",
-      description: "Certificação IPX7 para uso em qualquer ambiente, sem preocupações."
+      title: "Fácil de Limpar",
+      description: "Design à prova d'água IPX6 permite limpeza sob água corrente."
     }
   ],
   specifications: [
-    { label: "Potência", value: "40W RMS" },
-    { label: "Resposta de Frequência", value: "20Hz - 20kHz" },
-    { label: "Bluetooth", value: "5.3" },
-    { label: "Bateria", value: "5000mAh" },
-    { label: "Peso", value: "850g" },
-    { label: "Dimensões", value: "18 x 8 x 8 cm" },
+    { label: "Velocidades", value: "2 níveis" },
+    { label: "Bateria", value: "Li-ion 800mAh" },
+    { label: "Autonomia", value: "45 minutos" },
+    { label: "Carregamento", value: "USB-C" },
+    { label: "Peso", value: "180g" },
+    { label: "Lixas Incluídas", value: "3 unidades" },
   ]
 };
 
 export const shippingOptions = [
-  { id: "standard", name: "Frete Padrão", price: 19.90, days: "5-8 dias úteis" },
-  { id: "express", name: "Frete Expresso", price: 39.90, days: "2-3 dias úteis" },
-  { id: "free", name: "Frete Grátis", price: 0, days: "10-15 dias úteis", minOrder: 500 },
+  { id: "standard", name: "Frete Padrão", price: 14.90, days: "5-8 dias úteis" },
+  { id: "express", name: "Frete Expresso", price: 29.90, days: "2-3 dias úteis" },
+  { id: "free", name: "Frete Grátis", price: 0, days: "10-15 dias úteis", minOrder: 150 },
 ];
