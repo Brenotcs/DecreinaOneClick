@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ShoppingCart, Star, Sparkles } from 'lucide-react';
+import { ShoppingCart, Star, Sparkles, Sparkle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { product } from '@/data/product';
 import { useCart } from '@/contexts/CartContext';
@@ -24,7 +24,7 @@ export function Hero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="order-2 lg:order-1"
+            className="order-2 lg:order-1 z-20"
           >
             {/* Badge */}
             <motion.div
@@ -101,35 +101,26 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="order-1 lg:order-2 relative"
+            className="order-1 lg:order-2 relative z-10"
           >
-            <div className="relative">
+            <div className="relative flex flex-col items-center">
               {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl rounded-full" />
-              
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl rounded-full z-0" />
               <img
                 src={productImage}
                 alt={product.name}
                 className="relative z-10 w-full h-auto rounded-3xl shadow-2xl"
               />
-
-              {/* Floating badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="absolute -bottom-4 -right-4 bg-card p-4 rounded-2xl shadow-xl"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🦶</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Spa em Casa</p>
-                    <p className="text-sm text-muted-foreground">Qualidade Profissional</p>
-                  </div>
+              {/* Card abaixo da imagem */}
+              <div className="mt-6 bg-card p-4 rounded-2xl shadow-xl flex items-center gap-3">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Sparkle className="w-7 h-7 text-primary" />
                 </div>
-              </motion.div>
+                <div>
+                  <p className="font-semibold text-foreground">Spa em Casa</p>
+                  <p className="text-sm text-muted-foreground">Qualidade Profissional</p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
