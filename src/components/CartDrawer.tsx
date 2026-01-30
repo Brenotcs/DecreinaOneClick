@@ -84,7 +84,7 @@ export function CartDrawer() {
                   {/* Product */}
                   <div className="flex gap-4 p-4 bg-muted/50 rounded-xl">
                     <div className="w-20 h-20 bg-secondary rounded-lg flex items-center justify-center">
-                      <span className="text-3xl">🎧</span>
+                      <span className="text-3xl">🦶</span>
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-foreground">{product.name}</h3>

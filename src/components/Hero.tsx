@@ -92,7 +92,7 @@ export function Hero() {
             </motion.div>
 
             <p className="text-sm text-muted-foreground mt-4">
-              ✓ Frete grátis acima de R$ 500 &nbsp;•&nbsp; ✓ Garantia de 2 anos
+              ✓ Frete grátis acima de R$ 150 &nbsp;•&nbsp; ✓ Garantia de 1 ano
             </p>
           </motion.div>
 
@@ -122,11 +122,11 @@ export function Hero() {
               >
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🎧</span>
+                    <span className="text-2xl">🦶</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground">Premium Audio</p>
-                    <p className="text-sm text-muted-foreground">Qualidade Hi-Fi</p>
+                    <p className="font-semibold text-foreground">Spa em Casa</p>
+                    <p className="text-sm text-muted-foreground">Qualidade Profissional</p>
                   </div>
                 </div>
               </motion.div>

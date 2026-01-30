@@ -18,10 +18,10 @@ export function CTA() {
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="font-display text-4xl lg:text-5xl font-bold mb-6">
-            Pronto para transformar sua experiência sonora?
+            Pronta para ter pés macios e saudáveis?
           </h2>
           <p className="text-xl text-background/70 mb-8">
-            Junte-se a mais de 10.000 clientes satisfeitos e descubra o som como você nunca ouviu antes.
+            Junte-se a mais de 15.000 clientes satisfeitas e descubra o cuidado profissional em casa.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -43,13 +43,13 @@ export function CTA() {
                 <Truck className="w-6 h-6" />
               </div>
               <p className="font-medium">Frete Grátis</p>
-              <p className="text-sm text-background/60">Acima de R$ 500</p>
+              <p className="text-sm text-background/60">Acima de R$ 150</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center mb-3">
                 <Shield className="w-6 h-6" />
               </div>
-              <p className="font-medium">Garantia de 2 Anos</p>
+              <p className="font-medium">Garantia de 1 Ano</p>
               <p className="text-sm text-background/60">Cobertura total</p>
             </div>
             <div className="flex flex-col items-center">

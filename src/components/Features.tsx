@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
-import { Volume2, BatteryFull, Bluetooth, Droplets } from 'lucide-react';
+import { Sparkles, BatteryFull, VolumeX, Droplets } from 'lucide-react';
 import { product } from '@/data/product';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  'volume-2': Volume2,
+  'sparkles': Sparkles,
   'battery-full': BatteryFull,
-  'bluetooth': Bluetooth,
+  'volume-x': VolumeX,
   'droplets': Droplets,
 };
 
@@ -30,7 +30,7 @@ export function Features() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {product.features.map((feature, index) => {
-            const Icon = iconMap[feature.icon] || Volume2;
+            const Icon = iconMap[feature.icon] || Sparkles;
             return (
               <motion.div
                 key={feature.title}
