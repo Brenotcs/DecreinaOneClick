@@ -1,4 +1,5 @@
 import { Star } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const feedbacks = [
   {
@@ -16,6 +17,11 @@ const feedbacks = [
     text: 'Amei! O cheiro é suave e a hidratação dura o dia todo. Vale cada centavo.',
     rating: 5,
   },
+  {
+    name: 'Carlos M.',
+    text: 'Nunca imaginei que um creme pudesse resolver tanto! Minhas rachaduras sumiram em uma semana.',
+    rating: 5,
+  },
 ];
 
 export function FeedbackSection() {
@@ -26,7 +32,14 @@ export function FeedbackSection() {
         <p className="text-center text-muted-foreground mb-12">Veja relatos reais de quem já usou o Creme Podocare Ultra</p>
         <div className="grid md:grid-cols-3 gap-8">
           {feedbacks.map((fb, i) => (
-            <div key={i} className="bg-card rounded-2xl shadow-xl p-8 flex flex-col items-center text-center">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="bg-card rounded-2xl shadow-xl p-8 flex flex-col items-center text-center"
+            >
               <div className="flex gap-1 mb-2">
                 {[...Array(fb.rating)].map((_, j) => (
                   <Star key={j} className="w-5 h-5 fill-primary text-primary" />
@@ -34,7 +47,7 @@ export function FeedbackSection() {
               </div>
               <p className="text-lg mb-4">“{fb.text}”</p>
               <span className="font-semibold text-primary">{fb.name}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -59,6 +72,10 @@ const faqs = [
     q: 'Quanto tempo para ver resultados?',
     a: 'A maioria dos clientes percebe melhora significativa já nos primeiros dias de uso.'
   },
+  {
+    q: 'O creme possui fragrância forte?',
+    a: 'Não, o Creme Podocare Ultra possui fragrância suave e agradável, ideal para uso diário.'
+  },
 ];
 
 export function FAQSection() {
@@ -69,10 +86,17 @@ export function FAQSection() {
         <p className="text-center text-muted-foreground mb-12">Tire suas dúvidas sobre o Creme Podocare Ultra</p>
         <div className="space-y-6">
           {faqs.map((faq, i) => (
-            <div key={i} className="bg-card rounded-xl shadow p-6">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="bg-card rounded-xl shadow p-6"
+            >
               <h3 className="font-semibold text-lg mb-2">{faq.q}</h3>
               <p className="text-muted-foreground">{faq.a}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

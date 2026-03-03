@@ -195,54 +195,9 @@ export function CartDrawer() {
 }
 
 function CheckoutForm({ onBack }: { onBack: () => void }) {
-  const { customerInfo, setCustomerInfo, getTotal, clearCart, setIsCartOpen } = useCart();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate order processing
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSuccess(true);
-    
-    // Clear cart and close after showing success
-    setTimeout(() => {
-      clearCart();
-      setIsCartOpen(false);
-      setIsSuccess(false);
-    }, 3000);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setCustomerInfo({ ...customerInfo, [name]: value });
-  };
-
-  if (isSuccess) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center justify-center h-full text-center py-12"
-      >
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
-          <span className="text-4xl">✓</span>
-        </div>
-        <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-          Pedido Confirmado!
-        </h3>
-        <p className="text-muted-foreground">
-          Enviamos os detalhes para {customerInfo.email}
-        </p>
-      </motion.div>
-    );
-  }
-
+  const { getTotal } = useCart();
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="flex flex-col items-center justify-center h-full text-center py-12">
       <button
         type="button"
         onClick={onBack}
@@ -250,96 +205,20 @@ function CheckoutForm({ onBack }: { onBack: () => void }) {
       >
         ← Voltar ao carrinho
       </button>
-
-      <div className="space-y-4">
-        <h3 className="font-semibold text-foreground">Dados Pessoais</h3>
-        
-        <input
-          type="text"
-          name="name"
-          placeholder="Nome completo"
-          value={customerInfo.name}
-          onChange={handleChange}
-          required
-          className="w-full p-4 rounded-xl border border-border bg-background focus:border-primary focus:outline-none transition-colors"
-        />
-        
-        <input
-          type="email"
-          name="email"
-          placeholder="E-mail"
-          value={customerInfo.email}
-          onChange={handleChange}
-          required
-          className="w-full p-4 rounded-xl border border-border bg-background focus:border-primary focus:outline-none transition-colors"
-        />
-        
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Telefone"
-          value={customerInfo.phone}
-          onChange={handleChange}
-          required
-          className="w-full p-4 rounded-xl border border-border bg-background focus:border-primary focus:outline-none transition-colors"
-        />
-      </div>
-
-      <div className="space-y-4 pt-4">
-        <h3 className="font-semibold text-foreground">Endereço de Entrega</h3>
-        
-        <input
-          type="text"
-          name="zipCode"
-          placeholder="CEP"
-          value={customerInfo.zipCode}
-          onChange={handleChange}
-          required
-          className="w-full p-4 rounded-xl border border-border bg-background focus:border-primary focus:outline-none transition-colors"
-        />
-        
-        <input
-          type="text"
-          name="address"
-          placeholder="Endereço"
-          value={customerInfo.address}
-          onChange={handleChange}
-          required
-          className="w-full p-4 rounded-xl border border-border bg-background focus:border-primary focus:outline-none transition-colors"
-        />
-        
-        <div className="grid grid-cols-2 gap-4">
-          <input
-            type="text"
-            name="city"
-            placeholder="Cidade"
-            value={customerInfo.city}
-            onChange={handleChange}
-            required
-            className="w-full p-4 rounded-xl border border-border bg-background focus:border-primary focus:outline-none transition-colors"
-          />
-          
-          <input
-            type="text"
-            name="state"
-            placeholder="Estado"
-            value={customerInfo.state}
-            onChange={handleChange}
-            required
-            className="w-full p-4 rounded-xl border border-border bg-background focus:border-primary focus:outline-none transition-colors"
-          />
-        </div>
-      </div>
-
-      <div className="pt-4">
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full btn-primary py-6 text-lg font-semibold rounded-full disabled:opacity-50"
-        >
-          {isSubmitting ? 'Processando...' : `Finalizar Compra • R$ ${getTotal().toFixed(2).replace('.', ',')}`}
+      <h3 className="font-semibold text-foreground mb-6">Finalizar Compra</h3>
+      <a
+        href="https://sualoja.myshopify.com/cart/ID_DO_PRODUTO:1"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full"
+      >
+        <Button className="w-full btn-primary py-6 text-lg font-semibold rounded-full">
+          Finalizar Compra • R$ {getTotal().toFixed(2).replace('.', ',')}
         </Button>
-      </div>
-    </form>
+      </a>
+      <p className="text-muted-foreground mt-4 text-sm">
+        Você será redirecionado para o checkout do Shopify.
+      </p>
+    </div>
   );
 }
