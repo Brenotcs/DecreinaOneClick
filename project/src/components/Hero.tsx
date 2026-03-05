@@ -109,7 +109,7 @@ export function Hero() {
               <img
                 src={productImage}
                 alt={product.name}
-                className="relative z-10 w-full h-auto rounded-3xl shadow-2xl"
+                className="relative z-10 w-full max-w-sm mx-auto h-auto rounded-3xl shadow-2xl"
               />
               {/* Card abaixo da imagem */}
               <div className="mt-6 bg-card p-4 rounded-2xl shadow-xl flex items-center gap-3">
@@ -117,8 +117,8 @@ export function Hero() {
                   <Sparkle className="w-7 h-7 text-primary" />
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">Spa em Casa</p>
-                  <p className="text-sm text-muted-foreground">Qualidade Profissional</p>
+                  <p className="font-semibold text-foreground">Cuidado Podológico</p>
+                  <p className="text-sm text-muted-foreground">Qualidade Decreína</p>
                 </div>
               </div>
             </div>

@@ -24,7 +24,7 @@ export function Features() {
             Por que escolher o <span className="text-gradient">{product.name}</span>?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tecnologia de ponta em cada detalhe, projetado para quem busca a melhor experiência sonora.
+            Alta tecnologia em cada detalhe, projetado para quem busca a melhor experiência em cuidados para os pés.
           </p>
         </motion.div>
 

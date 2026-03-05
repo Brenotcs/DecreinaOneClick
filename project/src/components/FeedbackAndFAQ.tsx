@@ -29,7 +29,7 @@ export function FeedbackSection() {
     <section className="py-20 bg-muted/40">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-4">O que nossos clientes dizem</h2>
-        <p className="text-center text-muted-foreground mb-12">Veja relatos reais de quem já usou o Creme Podocare Ultra</p>
+        <p className="text-center text-muted-foreground mb-12">Veja relatos reais de quem já usou o Creme Decreína</p>
         <div className="grid md:grid-cols-3 gap-8">
           {feedbacks.map((fb, i) => (
             <motion.div
@@ -58,7 +58,7 @@ export function FeedbackSection() {
 const faqs = [
   {
     q: 'O creme pode ser usado por diabéticos?',
-    a: 'Sim! O Creme Podocare Ultra é dermatologicamente testado e seguro para todos os tipos de pele, inclusive diabéticos.'
+    a: 'Sim! O Creme Decreína é dermatologicamente testado e seguro para todos os tipos de pele, inclusive diabéticos.'
   },
   {
     q: 'Com que frequência devo aplicar?',
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     q: 'O creme possui fragrância forte?',
-    a: 'Não, o Creme Podocare Ultra possui fragrância suave e agradável, ideal para uso diário.'
+    a: 'Não, o Creme Decreína possui fragrância suave e agradável, ideal para uso diário.'
   },
 ];
 
@@ -83,7 +83,7 @@ export function FAQSection() {
     <section className="py-20">
       <div className="container mx-auto px-4 max-w-3xl">
         <h2 className="text-4xl font-bold text-center mb-4">Perguntas Frequentes</h2>
-        <p className="text-center text-muted-foreground mb-12">Tire suas dúvidas sobre o Creme Podocare Ultra</p>
+        <p className="text-center text-muted-foreground mb-12">Tire suas dúvidas sobre o Creme Decreína</p>
         <div className="space-y-6">
           {faqs.map((faq, i) => (
             <motion.div

@@ -1,6 +1,7 @@
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { product } from '@/data/product';
+import logoDecreina from '@/assets/logodecreina.png';
 
 export function Header() {
   const { items, setIsCartOpen } = useCart();
@@ -11,7 +12,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="font-display text-xl font-bold text-foreground">
-            {product.name}
+            <img src={logoDecreina} alt="Decreína" className="h-8 w-auto" />
           </div>
 
           <button

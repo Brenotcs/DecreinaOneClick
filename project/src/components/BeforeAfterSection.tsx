@@ -10,7 +10,7 @@ export default function BeforeAfterSection() {
             Antes e Depois
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Veja resultados reais do uso do Creme Podocare Ultra
+            Veja resultados reais do uso do Creme Decreína
           </p>
         </div>
         <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-8">

@@ -18,10 +18,10 @@ export interface Product {
 }
 
 export const product: Product = {
-  id: "creme-podocare-01",
-  name: "Creme Podocare Ultra",
+  id: "creme-decreina-01",
+  name: "Creme Decreína",
   tagline: "Hidratação e renovação para seus pés",
-  description: "O Creme Podocare Ultra foi desenvolvido especialmente para cuidados podológicos, promovendo hidratação intensa, renovação celular e alívio imediato do ressecamento. Fórmula enriquecida com ureia, óleo de melaleuca e pantenol para pés macios, saudáveis e protegidos.",
+  description: "O Creme Decreína foi desenvolvido especialmente para cuidados podológicos, promovendo hidratação intensa, renovação celular e alívio imediato do ressecamento. Fórmula enriquecida com ureia, óleo de melaleuca e pantenol para pés macios, saudáveis e protegidos.",
   price: 59.90,
   originalPrice: 89.90,
   images: [],
