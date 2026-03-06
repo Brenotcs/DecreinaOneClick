@@ -1,19 +1,22 @@
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
-import { product } from '@/data/product';
 import logoDecreina from '@/assets/logodecreina.png';
 
 export function Header() {
   const { items, setIsCartOpen } = useCart();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="font-display text-xl font-bold text-foreground">
-            <img src={logoDecreina} alt="Decreína" className="h-8 w-auto" />
-          </div>
+          <button onClick={scrollToTop} className="font-display text-xl font-bold text-foreground cursor-pointer focus:outline-none">
+            <img src={logoDecreina} alt="Decreína" className="h-8 w-auto hover:opacity-80 transition-opacity" />
+          </button>
 
           <button
             onClick={() => setIsCartOpen(true)}

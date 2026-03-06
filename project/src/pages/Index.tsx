@@ -1,10 +1,12 @@
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Features } from '@/components/Features';
-import { Specifications } from '@/components/Specifications';
-import { CTA } from '@/components/CTA';
+import { Ingredients } from '@/components/Ingredients';
+import { Products } from '@/components/Products';
+import { Testimonials } from '@/components/Testimonials';
 import { FAQSection } from '@/components/FeedbackAndFAQ';
-import BeforeAfterSection from '@/components/BeforeAfterSection';
+import { CTA } from '@/components/CTA';
+import { ContactSection } from '@/components/ContactSection';
 import { Footer } from '@/components/Footer';
 import { CartDrawer } from '@/components/CartDrawer';
 
@@ -15,10 +17,12 @@ const Index = () => {
       <main>
         <Hero />
         <Features />
-        <Specifications />
-        <BeforeAfterSection />
+        <Ingredients />
+        <Products />
+        <Testimonials />
         <FAQSection />
         <CTA />
+        <ContactSection />
       </main>
       <Footer />
       <CartDrawer />

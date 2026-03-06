@@ -1,89 +1,34 @@
-import { Star } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const feedbacks = [
-  {
-    name: 'Maria S.',
-    text: 'O creme realmente mudou a saúde dos meus pés! Em poucos dias já senti a pele mais macia e sem rachaduras.',
-    rating: 5,
-  },
-  {
-    name: 'João P.',
-    text: 'Produto excelente, absorve rápido e não deixa sensação oleosa. Recomendo para quem sofre com ressecamento.',
-    rating: 5,
-  },
-  {
-    name: 'Ana L.',
-    text: 'Amei! O cheiro é suave e a hidratação dura o dia todo. Vale cada centavo.',
-    rating: 5,
-  },
-  {
-    name: 'Carlos M.',
-    text: 'Nunca imaginei que um creme pudesse resolver tanto! Minhas rachaduras sumiram em uma semana.',
-    rating: 5,
-  },
-];
-
-export function FeedbackSection() {
-  return (
-    <section className="py-20 bg-muted/40">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-4">O que nossos clientes dizem</h2>
-        <p className="text-center text-muted-foreground mb-12">Veja relatos reais de quem já usou o Creme Decreína</p>
-        <div className="grid md:grid-cols-3 gap-8">
-          {feedbacks.map((fb, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-card rounded-2xl shadow-xl p-8 flex flex-col items-center text-center"
-            >
-              <div className="flex gap-1 mb-2">
-                {[...Array(fb.rating)].map((_, j) => (
-                  <Star key={j} className="w-5 h-5 fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-lg mb-4">“{fb.text}”</p>
-              <span className="font-semibold text-primary">{fb.name}</span>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 const faqs = [
   {
-    q: 'O creme pode ser usado por diabéticos?',
-    a: 'Sim! O Creme Decreína é dermatologicamente testado e seguro para todos os tipos de pele, inclusive diabéticos.'
+    q: 'Os produtos Decreína podem ser usados por diabéticos?',
+    a: 'Sim! Toda a linha Decreína é dermatologicamente testada e segura para todos os tipos de pele, inclusive diabéticos, proporcionando um cuidado delicado e eficaz.'
   },
   {
-    q: 'Com que frequência devo aplicar?',
-    a: 'Recomenda-se aplicar 1 a 2 vezes ao dia, preferencialmente após o banho.'
+    q: 'Com que frequência devo aplicar os produtos?',
+    a: 'Recomenda-se aplicar o Creme e a Loção Spray de 1 a 2 vezes ao dia. O Spray é ideal para proteção rápida antes de calçar sapatos, e o Creme para uma hidratação noturna profunda.'
   },
   {
-    q: 'O produto é testado em animais?',
-    a: 'Não. Nosso produto é cruelty-free e não é testado em animais.'
+    q: 'Os produtos são testados em animais?',
+    a: 'Não. Nossa fórmula é 100% livre de crueldade (cruelty-free) e composta por ingredientes naturais.'
   },
   {
-    q: 'Quanto tempo para ver resultados?',
-    a: 'A maioria dos clientes percebe melhora significativa já nos primeiros dias de uso.'
+    q: 'Quanto tempo demora para ver resultados na micose ou ressecamento?',
+    a: 'A maioria dos nossos clientes percebe uma melhora significativa no conforto e na aparência da pele já nos primeiros 3 a 5 dias de uso contínuo.'
   },
   {
-    q: 'O creme possui fragrância forte?',
-    a: 'Não, o Creme Decreína possui fragrância suave e agradável, ideal para uso diário.'
+    q: 'Grávidas podem usar?',
+    a: 'Nossa fórmula é natural, mas recomendamos que gestantes sempre consultem seu médico de confiança antes de iniciar o uso de qualquer dermocosmético.'
   },
 ];
 
 export function FAQSection() {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-secondary/10">
       <div className="container mx-auto px-4 max-w-3xl">
-        <h2 className="text-4xl font-bold text-center mb-4">Perguntas Frequentes</h2>
-        <p className="text-center text-muted-foreground mb-12">Tire suas dúvidas sobre o Creme Decreína</p>
+        <h2 className="font-display text-4xl font-bold text-center mb-4">Perguntas <span className="text-primary">Frequentes</span></h2>
+        <p className="text-center text-muted-foreground mb-12">Tire suas dúvidas sobre o tratamento com a linha Decreína</p>
         <div className="space-y-6">
           {faqs.map((faq, i) => (
             <motion.div
@@ -92,10 +37,10 @@ export function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-card rounded-xl shadow p-6"
+              className="bg-card border border-border/50 rounded-2xl shadow-sm p-6 lg:p-8 hover:shadow-md transition-shadow"
             >
-              <h3 className="font-semibold text-lg mb-2">{faq.q}</h3>
-              <p className="text-muted-foreground">{faq.a}</p>
+              <h3 className="font-display font-semibold text-xl mb-3">{faq.q}</h3>
+              <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
             </motion.div>
           ))}
         </div>

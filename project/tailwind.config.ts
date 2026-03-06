@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        display: ['"Noto Sans Math"', 'sans-serif'],
+        body: ['"Noto Sans Math"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

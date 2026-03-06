@@ -4,8 +4,9 @@ import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { useCart } from '@/contexts/CartContext';
-import { product, shippingOptions } from '@/data/product';
+import { products, shippingOptions } from '@/data/product';
 import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast'; // Added import for useToast
 
 export function CartDrawer() {
   const {
@@ -18,12 +19,12 @@ export function CartDrawer() {
     getSubtotal,
     getShippingCost,
     getTotal,
+    clearCart, // Assuming clearCart is available in CartContext
   } = useCart();
 
   const [step, setStep] = useState<'cart' | 'checkout'>('cart');
+  const { toast } = useToast(); // Initialize useToast
 
-  const cartItem = items.find(item => item.productId === product.id);
-  const quantity = cartItem?.quantity || 0;
   const subtotal = getSubtotal();
 
   const handleCheckout = () => {
@@ -33,6 +34,19 @@ export function CartDrawer() {
   const handleClose = () => {
     setIsCartOpen(false);
     setTimeout(() => setStep('cart'), 300);
+  };
+
+  // Function to handle the final checkout action from CheckoutForm
+  const handleFinalCheckout = () => {
+    // Optionally clear the cart here if desired
+    // clearCart(); // Uncomment if clearCart is implemented in CartContext
+    setIsCartOpen(false); // Close the drawer
+    toast({
+      title: "Redirecionando para o Checkout...",
+      description: "Esta é uma demonstração. Em breve esta loja estará aceitando pedidos!",
+    });
+    // In a real application, you would redirect to a payment gateway or a confirmation page
+    // window.location.href = "https://sualoja.myshopify.com/checkout";
   };
 
   return (
@@ -81,39 +95,50 @@ export function CartDrawer() {
                 </div>
               ) : step === 'cart' ? (
                 <div className="space-y-6">
-                  {/* Product */}
-                  <div className="flex gap-4 p-4 bg-muted/50 rounded-xl">
-                    <div className="w-20 h-20 bg-secondary rounded-lg flex items-center justify-center">
-                      <span className="text-3xl">🦶</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-foreground">{product.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-2">{product.tagline}</p>
-                      <p className="font-bold text-primary">
-                        R$ {product.price.toFixed(2).replace('.', ',')}
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-end justify-between">
-                      <div className="flex items-center gap-2 bg-background rounded-full p-1">
-                        <button
-                          onClick={() => updateQuantity(quantity - 1)}
-                          className="p-1 hover:bg-muted rounded-full transition-colors"
-                        >
-                          <Minus className="w-4 h-4" />
-                        </button>
-                        <span className="w-8 text-center font-semibold">{quantity}</span>
-                        <button
-                          onClick={() => updateQuantity(quantity + 1)}
-                          className="p-1 hover:bg-muted rounded-full transition-colors"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
+                  {/* Products */}
+                  <div className="space-y-4">
+                    {items.map((item) => {
+                      const product = products.find(p => p.id === item.productId);
+                      if (!product) return null;
+                      return (
+                        <div key={item.productId} className="flex gap-4 p-4 bg-muted/50 rounded-xl">
+                          <div className="w-20 h-20 bg-secondary rounded-lg flex items-center justify-center overflow-hidden shrink-0">
+                            {product.images?.[0] ? (
+                              <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
+                            ) : (
+                              <span className="text-3xl">🦶</span>
+                            )}
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-foreground">{product.name}</h3>
+                            <p className="font-bold text-primary mt-1">
+                              R$ {product.price.toFixed(2).replace('.', ',')}
+                            </p>
+                          </div>
+                          <div className="flex flex-col items-end justify-between">
+                            <div className="flex items-center gap-2 bg-background rounded-full p-1 border border-border">
+                              <button
+                                onClick={() => updateQuantity(item.productId, item.quantity - 1)}
+                                className="p-1 hover:bg-muted rounded-full transition-colors"
+                              >
+                                <Minus className="w-4 h-4" />
+                              </button>
+                              <span className="w-6 text-center font-semibold text-sm">{item.quantity}</span>
+                              <button
+                                onClick={() => updateQuantity(item.productId, item.quantity + 1)}
+                                className="p-1 hover:bg-muted rounded-full transition-colors"
+                              >
+                                <Plus className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
 
                   {/* Shipping */}
-                  <div className="space-y-4">
+                  <div className="space-y-4 pt-4 border-t border-border">
                     <div className="flex items-center gap-2">
                       <Truck className="w-5 h-5 text-primary" />
                       <h3 className="font-semibold">Opções de Frete</h3>
@@ -153,13 +178,13 @@ export function CartDrawer() {
                   </div>
                 </div>
               ) : (
-                <CheckoutForm onBack={() => setStep('cart')} />
+                <CheckoutForm onBack={() => setStep('cart')} onFinalCheckout={handleFinalCheckout} />
               )}
             </div>
 
             {/* Footer */}
             {items.length > 0 && (
-              <div className="border-t border-border p-6 space-y-4">
+              <div className="border-t border-border p-6 space-y-4 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] bg-background relative z-10">
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Subtotal</span>
@@ -180,7 +205,7 @@ export function CartDrawer() {
                 {step === 'cart' && (
                   <Button
                     onClick={handleCheckout}
-                    className="w-full btn-primary py-6 text-lg font-semibold rounded-full"
+                    className="w-full btn-primary py-6 text-lg font-semibold rounded-full shadow-lg shadow-primary/20"
                   >
                     Continuar para Checkout
                   </Button>
@@ -194,7 +219,7 @@ export function CartDrawer() {
   );
 }
 
-function CheckoutForm({ onBack }: { onBack: () => void }) {
+function CheckoutForm({ onBack, onFinalCheckout }: { onBack: () => void; onFinalCheckout: () => void }) {
   const { getTotal } = useCart();
   return (
     <div className="flex flex-col items-center justify-center h-full text-center py-12">
@@ -206,18 +231,15 @@ function CheckoutForm({ onBack }: { onBack: () => void }) {
         ← Voltar ao carrinho
       </button>
       <h3 className="font-semibold text-foreground mb-6">Finalizar Compra</h3>
-      <a
-        href="https://sualoja.myshopify.com/cart/ID_DO_PRODUTO:1"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full"
+      {/* Updated button as per instruction */}
+      <Button
+        onClick={onFinalCheckout} // Call the new handler
+        className="w-full btn-primary py-6 text-lg font-semibold rounded-full"
       >
-        <Button className="w-full btn-primary py-6 text-lg font-semibold rounded-full">
-          Finalizar Compra • R$ {getTotal().toFixed(2).replace('.', ',')}
-        </Button>
-      </a>
-      <p className="text-muted-foreground mt-4 text-sm">
-        Você será redirecionado para o checkout do Shopify.
+        Finalizar Compra • R$ {getTotal().toFixed(2).replace('.', ',')}
+      </Button>
+      <p className="text-muted-foreground mt-4 text-sm bg-muted/50 p-3 rounded-lg">
+        Você será redirecionado para o checkout.
       </p>
     </div>
   );

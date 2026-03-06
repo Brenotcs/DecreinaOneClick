@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { product, shippingOptions } from '@/data/product';
+import { Product, products, shippingOptions } from '@/data/product';
 
 interface CartItem {
   productId: string;
@@ -22,9 +22,9 @@ interface CartContextType {
   isCartOpen: boolean;
   selectedShipping: string;
   customerInfo: CustomerInfo;
-  addToCart: () => void;
-  removeFromCart: () => void;
-  updateQuantity: (quantity: number) => void;
+  addToCart: (product: { id: string, price: number }) => void;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
   setIsCartOpen: (open: boolean) => void;
   setSelectedShipping: (shippingId: string) => void;
   setCustomerInfo: (info: CustomerInfo) => void;
@@ -50,33 +50,33 @@ export function CartProvider({ children }: { children: ReactNode }) {
     zipCode: '',
   });
 
-  const addToCart = () => {
+  const addToCart = (productObj: { id: string, price: number }) => {
     setItems(prev => {
-      const existingItem = prev.find(item => item.productId === product.id);
+      const existingItem = prev.find(item => item.productId === productObj.id);
       if (existingItem) {
         return prev.map(item =>
-          item.productId === product.id
+          item.productId === productObj.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      return [...prev, { productId: product.id, quantity: 1, price: product.price }];
+      return [...prev, { productId: productObj.id, quantity: 1, price: productObj.price }];
     });
     setIsCartOpen(true);
   };
 
-  const removeFromCart = () => {
-    setItems([]);
+  const removeFromCart = (productId: string) => {
+    setItems(prev => prev.filter(item => item.productId !== productId));
   };
 
-  const updateQuantity = (quantity: number) => {
+  const updateQuantity = (productId: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart();
+      removeFromCart(productId);
       return;
     }
     setItems(prev =>
       prev.map(item =>
-        item.productId === product.id
+        item.productId === productId
           ? { ...item, quantity }
           : item
       )
@@ -143,3 +143,4 @@ export function useCart() {
   }
   return context;
 }
+
