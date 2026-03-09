@@ -70,18 +70,12 @@ export function Products() {
                     {product.description}
                   </p>
                   <ul className="space-y-3 mb-6">
-                    <li className="flex items-start gap-2 text-sm text-foreground">
-                      <Check className="w-5 h-5 text-primary shrink-0" />
-                      Combate imediato a fungos e bactérias
-                    </li>
-                    <li className="flex items-start gap-2 text-sm text-foreground">
-                      <Check className="w-5 h-5 text-primary shrink-0" />
-                      Testado dermatologicamente
-                    </li>
-                    <li className="flex items-start gap-2 text-sm text-foreground">
-                      <Check className="w-5 h-5 text-primary shrink-0" />
-                      Fórmula 100% segura
-                    </li>
+                    {product.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                        <Check className="w-5 h-5 text-primary shrink-0" />
+                        {benefit}
+                      </li>
+                    ))}
                   </ul>
                 </div>
 

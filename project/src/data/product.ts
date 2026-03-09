@@ -6,6 +6,7 @@ export interface Product {
   price: number;
   originalPrice?: number;
   images: string[];
+  benefits: string[];
   features: {
     icon: string;
     title: string;
@@ -22,24 +23,34 @@ import produto2Image from '@/assets/produto2.jpg';
 
 export const products: Product[] = [
   {
-    id: "creme-decreina-01",
-    name: "Creme Decreína",
-    tagline: "Hidratação e renovação para seus pés",
-    description: "O Creme Decreína foi desenvolvido para promover hidratação intensa, renovação celular e alívio imediato do ressecamento. Enriquecido com ureia e óleo de melaleuca.",
+    id: "ungueal-decreina-01",
+    name: "Solução Ungueal Decreína",
+    tagline: "Dermocosmético para Cuidado Intensivo das Unhas",
+    description: "Produto indicado para o cuidado intensivo das unhas com alterações estéticas associadas à micose.",
     price: 59.90,
     originalPrice: 89.90,
     images: [produto1Image],
+    benefits: [
+      "Auxiliar na manutenção da integridade da unha",
+      "Ajuda na higienização da superfície ungueal",
+      "Dermatologicamente Testado"
+    ],
     features: [],
     specifications: []
   },
   {
-    id: "locao-decreina-02",
-    name: "Loção Spray Decreína",
-    tagline: "Proteção e frescor diário",
-    description: "A Loção Spray Decreína combate fungos, alivia a coceira e interrompe o suor excessivo rapidamente. Fórmula leve de rápida absorção com ativos naturais.",
+    id: "foot-therapy-decreina-02",
+    name: "Foot Therapy",
+    tagline: "Cuidado Avançado para Pés Secos e Ásperos",
+    description: "Creme de alta concentração para o cuidado intensivo de pés secos e ásperos. Com Ureia 30% + Pro-Vitamina B5 + Ácido Hialurónico, atua como queratolítico e hidratante profundo.",
     price: 69.90,
     originalPrice: 99.90,
     images: [produto2Image],
+    benefits: [
+      "Fórmula Vegana e Sem Parabenos",
+      "Ação Regeneradora e Calmante",
+      "Dermatologicamente Testado"
+    ],
     features: [],
     specifications: []
   }
