@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Shield, Truck, RotateCcw } from 'lucide-react';
+import { ArrowUp, Shield, Truck, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function CTA() {
@@ -41,7 +41,7 @@ export function CTA() {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 rounded-full font-semibold gap-3"
               >
                 Ver Produtos
-                <ArrowDown className="w-5 h-5" />
+                <ArrowUp className="w-5 h-5" />
               </Button>
             </motion.div>
           </div>

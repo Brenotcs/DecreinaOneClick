@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Tag, Target, Activity, ShieldCheck, CheckCircle2, Info, Droplets, Leaf, Shield, Clock, Sparkles, SprayCan, Eraser, PenLine, Wrench, AlertTriangle, ShoppingCart } from 'lucide-react';
 import unguealInfoImg from '@/assets/unguealinfo.png';
+import diagramaUngueal from '@/assets/diagramaungueal.png';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
@@ -24,12 +25,6 @@ const productsData = {
         description: "Produto cosmético em conformidade com o Regulamento (CE) n.º 1223/2009.",
         note: "Nota: Não se trata de medicamento.",
         icon: ShieldCheck,
-      },
-      {
-        title: "Indicação",
-        description: "Produto indicado para o cuidado intensivo das unhas com alterações estéticas associadas à micose, incluindo:",
-        list: ["Fragilidade", "Aspereza", "Descoloração", "Aspecto irregular da lâmina"],
-        icon: Activity,
       },
       {
         title: "Indicação",
@@ -78,7 +73,16 @@ const productsData = {
       title: "Características da Lâmina",
       description: "Composta por camadas de queratina que conferem resistência mecânica, mas exigem formulações específicas para permeação adequada de ativos."
     },
-    price: 49.90
+    price: 49.90,
+    functionalSystems: {
+      title: "Sistemas funcionais complementares e integrados",
+      items: [
+        { name: "Sistema de Higienização e Equilíbrio", description: "Auxilia na higienização da unha, contribuindo para a redução de condições favoráveis ao desenvolvimento de alterações estéticas." },
+        { name: "Sistema de Renovação e Uniformização", description: "Auxilia na renovação suave da superfície da unha, reduzindo aspereza e irregularidades para uma aparência mais uniforme." },
+        { name: "Sistema de Hidratação e Condicionamento", description: "Melhora a flexibilidade e resistência mecânica da lâmina ungueal, reduzindo a quebra e fragilidade associadas ao ressecamento." },
+        { name: "Sistema de Permeação e Veiculação", description: "Favorece a distribuição homogênea da formulação, garantindo melhor contato dos componentes cosméticos com a superfície." }
+      ]
+    }
   },
   footTherapy: {
     id: "foot-therapy-decreina-02",
@@ -124,7 +128,8 @@ const productsData = {
     },
     supportFeatures: undefined,
     supportWarning: undefined,
-    price: 38.90
+    price: 38.90,
+    functionalSystems: undefined
   }
 };
 
@@ -322,7 +327,52 @@ export function ProductEducation() {
                 </div>
               </div>
 
-                {/* Seção de Apoio Cosmético Base (Ocupa a largura total da página abaixo do grid principal) */}
+              {/* Seção de Sistemas Funcionais (Aparece se existir functionalSystems - Ex: Ungueal) */}
+              {product.functionalSystems && (
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="mt-16 grid lg:grid-cols-2 gap-12 items-center bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl rounded-[2.5rem] p-8 lg:p-12 border border-border/60 shadow-sm"
+                >
+                  <div className="flex justify-center items-center h-full order-2 lg:order-1">
+                    <motion.div 
+                      className="flex justify-center items-center w-full max-w-md p-4 rounded-[2rem] shadow-sm border border-border/40"
+                      style={{ backgroundColor: '#fefefe' }}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <img 
+                        src={diagramaUngueal} 
+                        alt="Diagrama de Formulação Cosmética Ungueal Integrada"
+                        className="w-full object-contain drop-shadow-md mix-blend-multiply dark:mix-blend-normal rounded-xl" 
+                      />
+                    </motion.div>
+                  </div>
+                  
+                  <div className="space-y-8 order-1 lg:order-2">
+                    <h4 className="text-2xl lg:text-3xl font-bold text-foreground mb-10 text-center lg:text-left leading-tight">
+                      {product.functionalSystems.title}
+                    </h4>
+                    <div className="space-y-8">
+                      {product.functionalSystems.items.map((item, index) => (
+                        <div key={index} className="flex gap-5 items-start">
+                          <div className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0 font-bold shadow-md mt-0.5 text-base">
+                            {index + 1}
+                          </div>
+                          <div>
+                            <strong className="text-foreground text-xl block mb-2">{item.name}</strong>
+                            <p className="text-muted-foreground leading-relaxed text-base">{item.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Seção de Apoio Cosmético Base (Ocupa a largura total da página abaixo do grid principal) */}
                   {product.supportFeatures && (
                     <motion.div
                       initial={{ opacity: 0, y: 30 }}
