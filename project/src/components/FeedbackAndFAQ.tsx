@@ -1,4 +1,10 @@
 import { motion } from 'framer-motion';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const faqs = [
   {
@@ -29,21 +35,26 @@ export function FAQSection() {
       <div className="container mx-auto px-4 max-w-3xl">
         <h2 className="font-display text-4xl font-bold text-center mb-4">Perguntas <span className="text-primary">Frequentes</span></h2>
         <p className="text-center text-muted-foreground mb-12">Tire suas dúvidas sobre o tratamento com a linha Decreína</p>
-        <div className="space-y-6">
+        <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-card border border-border/50 rounded-2xl shadow-sm p-6 lg:p-8 hover:shadow-md transition-shadow"
+              transition={{ duration: 0.4, delay: i * 0.1 }}
             >
-              <h3 className="font-display font-semibold text-xl mb-3">{faq.q}</h3>
-              <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
+              <AccordionItem value={`item-${i}`} className="bg-card border border-border/50 rounded-2xl shadow-sm px-6 overflow-hidden">
+                <AccordionTrigger className="font-display font-semibold text-lg text-left hover:no-underline hover:text-primary transition-colors py-6">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed text-base pb-6">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
             </motion.div>
           ))}
-        </div>
+        </Accordion>
       </div>
     </section>
   );
