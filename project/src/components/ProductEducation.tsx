@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Tag, Target, Activity, ShieldCheck, CheckCircle2, Info, Droplets, Leaf, Shield, Clock, Sparkles, SprayCan, Eraser, PenLine, Wrench, AlertTriangle, ShoppingCart } from 'lucide-react';
+import { Tag, Target, Activity, ShieldCheck, CheckCircle2, Info, Droplets, Leaf, Shield, Clock, Sparkles, SprayCan, Eraser, PenLine, Wrench, AlertTriangle, ShoppingCart, FlaskConical, BadgeCheck, Layers, Ban, Check, ActivitySquare } from 'lucide-react';
 import unguealInfoImg from '@/assets/unguealinfo.png';
 import diagramaUngueal from '@/assets/diagramaungueal.png';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
 
-const productsData = {
+const productsData: Record<string, any> = {
   ungueal: {
     id: "ungueal-decreina-01",
     name: "Solução Ungueal Decreína",
@@ -88,52 +88,50 @@ const productsData = {
     id: "foot-therapy-decreina-02",
     name: "Decreína Foot Therapy",
     subtitle: "Renovação Profunda e Hidratação para os Pés",
-    description: "Tratamento intensivo focado na recuperação da pele dos pés, combatendo ressecamento extremo, rachaduras e calosidades, proporcionando alívio imediato e duradouro.",
-    badges: ["Hidratação 24h", "Toque Seco", "Renovação Celular"],
-    image: "", // Placeholder ou imagem genérica pode ser inserida aqui posteriormente
+    description: "Creme de alta concentração para o cuidado intensivo de pés secos e ásperos. Com Ureia 30% + Pro-Vitamina B5 + Ácido Hialurônico, atua como queratolítico e hidratante profundo.",
+    badges: ["Fórmula Vegana", "Dermatologicamente testado", "Sem Parabenos"],
+    image: "", // Placeholder
     details: [
       {
-        title: "Categoria",
-        description: "Dermocosmético de alta performance para cuidados com a pele dos pés.",
-        icon: Tag,
-      },
-      {
-        title: "Segurança e Qualidade",
-        description: "Dermatologicamente testado e seguro para uso diário contínuo.",
-        note: "Ideal para uso em conjunto com a Solução Ungueal.",
-        icon: ShieldCheck,
-      },
-      {
-        title: "Indicação",
-        description: "Tratamento diário e noturno para pés com necessidades de cuidado extremo:",
-        list: ["Rachaduras severas no calcanhar", "Ressecamento", "Pele áspera e descamativa", "Cansaço e fadiga plantar"],
+        title: "Indicações Cosméticas",
+        description: "O Foot Therapy é indicado para pacientes que apresentam alterações cutâneas plantares relacionadas com o ressecamento e a hiperqueratose:",
+        list: ["Xerose Plantar", "Hiperqueratose e Calosidades", "Fissuras e Gretas", "Pele Áspera e Rugosa"],
         icon: Activity,
       },
       {
-        title: "Objetivo Principal",
-        description: "Restaurar a barreira cutânea, nutrir profundamente as camadas da pele e promover a regeneração de áreas danificadas.",
-        icon: Target,
+        title: "Xerose Plantar",
+        description: "Pele excessivamente seca, com sensação de tensão, descamação fina e perda da elasticidade cutânea.",
+        icon: Droplets,
+      },
+      {
+        title: "Hiperqueratose e Calosidades",
+        description: "Espessamento localizado da camada córnea, com formação de calos e áreas de pele endurecida.",
+        icon: Layers,
+      },
+      {
+        title: "Fissuras e Gretas",
+        description: "Fissuras superficiais e profundas no calcanhar e bordas plantares, associadas ao ressecamento severo e perda de integridade cutânea.",
+        icon: ActivitySquare,
       }
     ],
-    anatomyLabel: "Estrutura da Pele do Pé",
+    anatomyLabel: "Porque é que o Foot Therapy se Destaca",
     anatomyParts: [
-      { name: "Estrato Córneo Espesso", description: "Camada externa mais grossa que precisa de emoliência." },
-      { name: "Epiderme", description: "Barreira protetora onde a hidratação atua primariamente." },
-      { name: "Derme", description: "Camada profunda que se regenera com ativos estimulantes." },
-      { name: "Calcanhar (Zona de Impacto)", description: "Área de maior atrito, sujeita a hiperqueratose." },
+      { name: "Ureia 30%", description: "Renovação eficaz da pele espessada com conforto duradouro." },
+      { name: "Ácido Hialurônico", description: "Retém até 1000x o seu peso em água." },
+      { name: "Pro-Vitamina B5", description: "Ajuda a reparar a pele e reforçar a barreira cutânea." },
+      { name: "Fórmula Vegana", description: "100% livre de ingredientes de origem animal e sem parabenos." },
+      { name: "Dermatologicamente Testado", description: "Comprovação de segurança e tolerância, inclusive para peles sensíveis." },
+      { name: "pH Fisiológico (6,0-7,0)", description: "pH compatível com a pele plantar, preserva a barreira natural." },
     ],
     anatomyNote: {
-      title: "Por que os Pés Ressecam?",
-      description: "A pele dos pés possui menos glândulas sebáceas que o restante do corpo, tornando-se naturalmente mais propensa à desidratação e rachaduras causadas por peso e atrito."
+      title: "Uso Profissional e Domiciliar",
+      description: "Uso tópico, apenas nos pés. O uso em gestantes deve ser sempre acompanhado pelo médico assistente."
     },
-    supportFeatures: undefined,
-    supportWarning: undefined,
     price: 38.90,
-    functionalSystems: undefined
   }
 };
 
-const badgeIcons = [Leaf, Clock, Shield];
+const badgeIcons = [Leaf, ShieldCheck, Ban, Check];
 
 export function ProductEducation() {
   const { addToCart } = useCart();
@@ -194,8 +192,8 @@ export function ProductEducation() {
               >
                 <div className="grid lg:grid-cols-2 gap-12 items-start">
                   
-                  {/* Coluna 1: Imagem (Se não for Ungueal) e Informações Detalhadas (Indicação) */}
-                  <div className="space-y-8 order-2 lg:order-1">
+                  {/* Coluna 1: Informações Detalhadas (Indicação) */}
+                  <div className={`space-y-8 order-2 ${product.id === 'foot-therapy-decreina-02' ? 'lg:order-2' : 'lg:order-1'}`}>
                     <div className="flex flex-col gap-6 lg:pt-4">
                       <h3 className="text-3xl font-display font-bold text-foreground leading-tight">{product.name}</h3>
                       <p className="text-xl text-primary font-medium tracking-wide">{product.subtitle}</p>
@@ -205,7 +203,7 @@ export function ProductEducation() {
                     </div>
                     
                     <div className="grid gap-6">
-                      {product.details.map((detail, index) => (
+                      {product.details?.map((detail: any, index: number) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, y: 20 }}
@@ -214,227 +212,219 @@ export function ProductEducation() {
                           transition={{ duration: 0.4, delay: index * 0.1 }}
                           className="bg-white dark:bg-zinc-900 rounded-3xl p-6 md:p-8 shadow-sm border border-border/50 hover:border-primary/40 hover:shadow-md transition-all flex flex-col h-full"
                         >
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="bg-primary/10 p-2.5 rounded-xl text-primary">
-                            <detail.icon className="w-5 h-5" />
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="bg-primary/10 p-2.5 rounded-xl text-primary">
+                              {detail.icon && <detail.icon className="w-5 h-5" />}
+                            </div>
+                            <h4 className="font-bold text-foreground text-lg">{detail.title}</h4>
                           </div>
-                          <h4 className="font-bold text-foreground text-lg">{detail.title}</h4>
-                        </div>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                          {detail.description}
-                        </p>
-                        
-                        {detail.list && (
-                          <ul className="space-y-3 bg-secondary/30 p-4 rounded-xl">
-                            {detail.list.map((item, i) => (
-                              <li key={i} className="flex items-start gap-3 text-sm text-foreground font-medium">
-                                <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        
-                        {detail.note && (
-                          <p className="mt-4 text-xs font-medium text-muted-foreground/80 flex items-center gap-2 bg-primary/5 p-3 rounded-lg border border-primary/10">
-                            <Info className="w-4 h-4 text-primary shrink-0" />
-                            {detail.note}
+                          <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                            {detail.description}
                           </p>
-                        )}
-                      </motion.div>
-                    ))}
+                          
+                          {detail.list && (
+                            <ul className="space-y-3 bg-secondary/30 p-4 rounded-xl">
+                              {detail.list.map((item: any, i: number) => (
+                                <li key={i} className="flex items-start gap-3 text-sm text-foreground font-medium">
+                                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          
+                          {detail.note && (
+                            <p className="mt-4 text-xs font-medium text-muted-foreground/80 flex items-center gap-2 bg-primary/5 p-3 rounded-lg border border-primary/10">
+                              <Info className="w-4 h-4 text-primary shrink-0" />
+                              {detail.note}
+                            </p>
+                          )}
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Coluna 2: Anatomia (Alinhada com a Esquerda) */}
-                <div className="space-y-8 order-1 lg:order-2 h-full">
-                  <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-[2.5rem] p-8 shadow-sm border border-border/50 relative group flex flex-col h-full lg:mt-0">
-                    <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-[2.5rem] pointer-events-none"></div>
-                    
-                    <div className="relative z-10 flex flex-col h-full">
-                      <div className="flex flex-wrap justify-center gap-3 mb-8">
-                        {product.badges.map((badge, i) => {
-                          const Icon = badgeIcons[i % badgeIcons.length];
-                          return (
-                            <span key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold shadow-sm">
-                              <Icon className="w-3.5 h-3.5" />
-                              {badge}
-                            </span>
-                          );
-                        })}
-                      </div>
+                  {/* Coluna 2: Anatomia/Destaques (Alinhada com a Esquerda) */}
+                  <div className={`space-y-8 order-1 h-full flex flex-col ${product.id === 'foot-therapy-decreina-02' ? 'lg:order-1' : 'lg:order-2'}`}>
+                    <motion.div 
+                      className="relative w-[85%] mx-auto mb-2 group"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      {product.image ? (
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-full h-auto object-contain rounded-[2.5rem] shadow-xl ring-1 ring-border/50 group-hover:ring-primary/30 transition-all duration-500"
+                        />
+                      ) : (
+                        <div className="w-full aspect-square md:h-[400px] rounded-[2.5rem] border-2 border-dashed border-border flex items-center justify-center bg-secondary/10">
+                          <p className="text-muted-foreground font-medium">Insira a foto do produto na pasta assets</p>
+                        </div>
+                      )}
+                    </motion.div>
 
-                      {/* Imagem Padrão (só mostra se o id NÃO for 'ungueal' e tiver imagem real) */}
-                      {product.id !== 'ungueal' && (
-                        product.image ? (
-                          <motion.div 
-                            className="flex justify-center items-center mb-8"
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                          >
-                            <img 
-                              src={product.image} 
-                              alt={product.anatomyLabel}
-                              className="w-full max-w-sm object-contain drop-shadow-2xl mix-blend-multiply dark:mix-blend-normal" 
-                            />
-                          </motion.div>
-                        ) : (
-                          <div className="w-full h-64 bg-secondary/50 rounded-2xl flex items-center justify-center mb-8 border-2 border-dashed border-border">
-                            <p className="text-muted-foreground font-medium flex items-center gap-2">
-                              <Activity className="w-5 h-5" />
-                              Imagem Ilustrativa (Em Breve)
+                    <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-[2.5rem] p-8 shadow-sm border border-border/50 relative group flex flex-col flex-1 lg:mt-0">
+                      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-[2.5rem] pointer-events-none"></div>
+                      
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="flex flex-wrap justify-center gap-3 mb-8">
+                          {product.badges?.map((badge: string, i: number) => {
+                            const Icon = badgeIcons[i % badgeIcons.length];
+                            return (
+                              <span key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold shadow-sm">
+                                <Icon className="w-3.5 h-3.5" />
+                                {badge}
+                              </span>
+                            );
+                          })}
+                        </div>
+
+                        <h4 className="font-bold text-xl text-foreground mb-6 flex items-center gap-2 mt-4 lg:mt-0">
+                          <Activity className="w-5 h-5 text-primary" />
+                          {product.anatomyLabel}
+                        </h4>
+                        <ul className="space-y-4 relative before:absolute before:inset-y-0 before:left-[15px] before:w-[2px] before:bg-primary/20 flex-1">
+                          {product.anatomyParts?.map((part: {name: string, description: string}, index: number) => (
+                            <motion.li 
+                              key={index}
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: index * 0.1 }}
+                              className="flex items-start gap-4 relative z-10"
+                            >
+                              <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center shrink-0 text-primary font-bold text-sm shadow-md">
+                                {index + 1}
+                              </div>
+                              <div className="pt-1">
+                                <strong className="text-foreground block mb-0.5">{part.name}</strong>
+                                <span className="text-muted-foreground text-sm leading-tight inline-block">{part.description}</span>
+                              </div>
+                            </motion.li>
+                          ))}
+                        </ul>
+
+                        <div className="mt-8 bg-blue-50/80 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl p-5 flex gap-4 items-start shadow-sm h-auto lg:mt-auto">
+                          <Info className="w-6 h-6 text-blue-500 shrink-0 mt-0.5" />
+                          <div>
+                            <strong className="text-blue-900 dark:text-blue-200 block mb-1.5 text-sm">{product.anatomyNote?.title}</strong>
+                            <p className="text-blue-800/80 dark:text-blue-300/80 text-sm leading-relaxed">
+                              {product.anatomyNote?.description}
                             </p>
                           </div>
-                        )
-                      )}
-
-                      <h4 className="font-bold text-xl text-foreground mb-6 flex items-center gap-2 mt-4 lg:mt-0">
-                        <Activity className="w-5 h-5 text-primary" />
-                        {product.anatomyLabel}
-                      </h4>
-                      <ul className="space-y-4 relative before:absolute before:inset-y-0 before:left-[15px] before:w-[2px] before:bg-primary/20 flex-1">
-                        {product.anatomyParts.map((part, index) => (
-                          <motion.li 
-                            key={index}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.3, delay: index * 0.1 }}
-                            className="flex items-start gap-4 relative z-10"
-                          >
-                            <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center shrink-0 text-primary font-bold text-sm shadow-md">
-                              {index + 1}
-                            </div>
-                            <div className="pt-1">
-                              <strong className="text-foreground block mb-0.5">{part.name}</strong>
-                              <span className="text-muted-foreground text-sm leading-tight inline-block">{part.description}</span>
-                            </div>
-                          </motion.li>
-                        ))}
-                      </ul>
-
-                      <div className="mt-8 bg-blue-50/80 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl p-5 flex gap-4 items-start shadow-sm h-auto lg:mt-auto">
-                        <Info className="w-6 h-6 text-blue-500 shrink-0 mt-0.5" />
-                        <div>
-                          <strong className="text-blue-900 dark:text-blue-200 block mb-1.5 text-sm">{product.anatomyNote.title}</strong>
-                          <p className="text-blue-800/80 dark:text-blue-300/80 text-sm leading-relaxed">
-                            {product.anatomyNote.description}
-                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Seção de Sistemas Funcionais (Aparece se existir functionalSystems - Ex: Ungueal) */}
-              {product.functionalSystems && (
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="mt-16 grid lg:grid-cols-2 gap-12 items-center bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl rounded-[2.5rem] p-8 lg:p-12 border border-border/60 shadow-sm"
-                >
-                  <div className="flex justify-center items-center h-full order-2 lg:order-1">
-                    <motion.div 
-                      className="flex justify-center items-center w-full max-w-md p-4 rounded-[2rem] shadow-sm border border-border/40"
-                      style={{ backgroundColor: '#fefefe' }}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    >
-                      <img 
-                        src={diagramaUngueal} 
-                        alt="Diagrama de Formulação Cosmética Ungueal Integrada"
-                        className="w-full object-contain drop-shadow-md mix-blend-multiply dark:mix-blend-normal rounded-xl" 
-                      />
-                    </motion.div>
-                  </div>
-                  
-                  <div className="space-y-8 order-1 lg:order-2">
-                    <h4 className="text-2xl lg:text-3xl font-bold text-foreground mb-10 text-center lg:text-left leading-tight">
-                      {product.functionalSystems.title}
-                    </h4>
-                    <div className="space-y-8">
-                      {product.functionalSystems.items.map((item, index) => (
-                        <div key={index} className="flex gap-5 items-start">
-                          <div className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0 font-bold shadow-md mt-0.5 text-base">
-                            {index + 1}
+                {/* Seção de Sistemas Funcionais (Ungueal ou quem tiver) */}
+                {product.functionalSystems && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="mt-16 grid lg:grid-cols-2 gap-12 items-center bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl rounded-[2.5rem] p-8 lg:p-12 border border-border/60 shadow-sm"
+                  >
+                    <div className="flex justify-center items-center h-full order-2 lg:order-1">
+                      <motion.div 
+                        className="flex justify-center items-center w-full max-w-md p-4 rounded-[2rem] shadow-sm border border-border/40"
+                        style={{ backgroundColor: '#fefefe' }}
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      >
+                        <img 
+                          src={diagramaUngueal} 
+                          alt="Diagrama de Formulação Cosmética Ungueal Integrada"
+                          className="w-full object-contain drop-shadow-md mix-blend-multiply dark:mix-blend-normal rounded-xl" 
+                        />
+                      </motion.div>
+                    </div>
+                    
+                    <div className="space-y-8 order-1 lg:order-2">
+                      <h4 className="text-2xl lg:text-3xl font-bold text-foreground mb-10 text-center lg:text-left leading-tight">
+                        {product.functionalSystems.title}
+                      </h4>
+                      <div className="space-y-8">
+                        {product.functionalSystems.items.map((item: any, index: number) => (
+                          <div key={index} className="flex gap-5 items-start">
+                            <div className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0 font-bold shadow-md mt-0.5 text-base">
+                              {index + 1}
+                            </div>
+                            <div>
+                              <strong className="text-foreground text-xl block mb-2">{item.name}</strong>
+                              <p className="text-muted-foreground leading-relaxed text-base">{item.description}</p>
+                            </div>
                           </div>
-                          <div>
-                            <strong className="text-foreground text-xl block mb-2">{item.name}</strong>
-                            <p className="text-muted-foreground leading-relaxed text-base">{item.description}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Seção de Apoio Cosmético Base */}
+                {product.supportFeatures && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="mt-12 bg-secondary/20 rounded-3xl p-8 border border-border"
+                  >
+                    <h4 className="text-xl font-bold text-foreground mb-2">
+                      Apoio Cosmético na <span className="text-primary">Preparação da Lâmina</span>
+                    </h4>
+                    <p className="text-muted-foreground mb-8">
+                      O produto pode ser utilizado como apoio cosmético na preparação da lâmina ungueal, contribuindo para um ambiente mais cuidado.
+                    </p>
+
+                    <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10 mb-10">
+                      {product.supportFeatures.map((feature: any, idx: number) => (
+                        <div key={idx} className="flex gap-4 items-start bg-background/50 p-4 rounded-2xl h-full">
+                          <div className="bg-primary/10 p-3.5 rounded-full text-primary shrink-0 shadow-sm">
+                            <feature.icon className="w-6 h-6" />
+                          </div>
+                          <div className="pt-1">
+                            <strong className="text-foreground text-lg block mb-2">{feature.title}</strong>
+                            <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                           </div>
                         </div>
                       ))}
                     </div>
-                  </div>
-                </motion.div>
-              )}
 
-              {/* Seção de Apoio Cosmético Base (Ocupa a largura total da página abaixo do grid principal) */}
-                  {product.supportFeatures && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="mt-12 bg-secondary/20 rounded-3xl p-8 border border-border"
-                    >
-                      <h4 className="text-xl font-bold text-foreground mb-2">
-                        Apoio Cosmético na <span className="text-primary">Preparação da Lâmina</span>
-                      </h4>
-                      <p className="text-muted-foreground mb-8">
-                        O produto pode ser utilizado como apoio cosmético na preparação da lâmina ungueal, contribuindo para um ambiente mais cuidado.
-                      </p>
-
-                      <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10 mb-10">
-                        {product.supportFeatures.map((feature, idx) => (
-                          <div key={idx} className="flex gap-4 items-start bg-background/50 p-4 rounded-2xl h-full">
-                            <div className="bg-primary/10 p-3.5 rounded-full text-primary shrink-0 shadow-sm">
-                              <feature.icon className="w-6 h-6" />
-                            </div>
-                            <div className="pt-1">
-                              <strong className="text-foreground text-lg block mb-2">{feature.title}</strong>
-                              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {product.supportWarning && (
-                        <div className="bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 rounded-2xl p-5 flex gap-4 items-start shadow-sm">
-                          <AlertTriangle className="w-6 h-6 text-amber-500 shrink-0 mt-0.5" />
-                          <div>
-                            <strong className="text-amber-900 dark:text-amber-500 block mb-1 text-sm">Nota Importante</strong>
-                            <p className="text-amber-800/80 dark:text-amber-400/80 text-sm leading-relaxed">
-                              {product.supportWarning}
-                            </p>
-                          </div>
+                    {product.supportWarning && (
+                      <div className="bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 rounded-2xl p-5 flex gap-4 items-start shadow-sm">
+                        <AlertTriangle className="w-6 h-6 text-amber-500 shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-amber-900 dark:text-amber-500 block mb-1 text-sm">Nota Importante</strong>
+                          <p className="text-amber-800/80 dark:text-amber-400/80 text-sm leading-relaxed">
+                            {product.supportWarning}
+                          </p>
                         </div>
-                      )}
-                    </motion.div>
-                  )}
-
-                  {/* Botão de Compra Centralizado Ocupando a Base */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="mt-6 flex justify-center w-full"
-                  >
-                    {(product.price !== undefined || product.id === 'ungueal-decreina-01') && (
-                      <Button 
-                        size="lg" 
-                        className="btn-primary rounded-full px-12 py-8 text-xl sm:min-w-[400px] shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all"
-                        onClick={() => addToCart({ id: product.id, price: product.price || 49.90 })}
-                      >
-                        <ShoppingCart className="w-6 h-6 mr-3" />
-                        Compre Agora
-                      </Button>
+                      </div>
                     )}
                   </motion.div>
+                )}
+
+                {/* Botão de Compra Centralizado Ocupando a Base */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="mt-6 flex justify-center w-full"
+                >
+                  <Button 
+                    size="lg" 
+                    className="btn-primary rounded-full px-12 py-8 text-xl sm:min-w-[400px] shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all"
+                    onClick={() => addToCart({ id: product.id, price: product.price || 49.90 })}
+                  >
+                    <ShoppingCart className="w-6 h-6 mr-3" />
+                    Compre Agora
+                  </Button>
+                </motion.div>
 
               </motion.div>
             </TabsContent>
