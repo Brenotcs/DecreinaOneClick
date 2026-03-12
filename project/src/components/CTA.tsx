@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUp, Shield, Truck, RotateCcw } from 'lucide-react';
+import { ArrowUp, Shield, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function CTA() {
@@ -46,14 +46,7 @@ export function CTA() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center mb-3">
-                <Truck className="w-6 h-6" />
-              </div>
-              <p className="font-medium">Entrega Rápida</p>
-              <p className="text-sm text-background/60">Para todo o Brasil</p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 bg-background/10 rounded-full flex items-center justify-center mb-3">
                 <Shield className="w-6 h-6" />
