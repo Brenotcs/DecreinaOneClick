@@ -82,11 +82,11 @@ export function Products() {
                 <div className="mt-auto">
                   <div className="flex items-end gap-3 mb-6">
                     <span className="text-4xl font-bold text-foreground">
-                      R$ {product.price.toFixed(2).replace('.', ',')}
+                      {product.price.toFixed(2).replace('.', ',')} €
                     </span>
                     {product.originalPrice && (
                       <span className="text-lg text-muted-foreground line-through mb-1">
-                        R$ {product.originalPrice.toFixed(2).replace('.', ',')}
+                        {product.originalPrice.toFixed(2).replace('.', ',')} €
                       </span>
                     )}
                   </div>

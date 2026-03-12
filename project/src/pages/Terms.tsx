@@ -40,6 +40,10 @@ export default function Terms() {
           <p className="leading-relaxed text-muted-foreground mb-6">
             Todas as compras estão sujeitas à confirmação de pagamento e disponibilidade de estoque. Reservamo-nos o direito de cancelar pedidos suspeitos de fraude.
           </p>
+          <h2 className="text-2xl font-semibold mt-8 mb-4">4. Jurisdição e Lei Aplicável</h2>
+          <p className="leading-relaxed text-muted-foreground mb-6">
+            Estes Termos de Uso são regidos e interpretados de acordo com a legislação de Portugal e as diretrizes do Espaço Económico Europeu (EEE). Qualquer litígio emergente da utilização deste site, que não possa ser resolvido por via de Resolução Alternativa de Litígios (RAL), será submetido à jurisdição exclusiva dos tribunais portugueses.
+          </p>
         </div>
       </main>
 

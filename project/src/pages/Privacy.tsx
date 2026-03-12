@@ -27,7 +27,7 @@ export default function Privacy() {
       <main className="flex-1 container mx-auto px-4 py-32 max-w-4xl pt-32">
         <h1 className="font-display text-4xl lg:text-5xl font-bold mb-8">Política de Privacidade</h1>
         <div className="prose prose-lg dark:prose-invert">
-          <p className="text-muted-foreground mb-6">A sua privacidade é importante para nós. É política da Decreína respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site.</p>
+          <p className="text-muted-foreground mb-6">A sua privacidade é importante para nós. É política da Decreína respeitar a sua privacidade em relação a qualquer informação sua que possamos recolher no site, em estrita conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD) da União Europeia.</p>
           <h2 className="text-2xl font-semibold mt-8 mb-4">1. Coleta de Informações</h2>
           <p className="leading-relaxed text-muted-foreground mb-6">
             Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço (como durante a criação do seu pedido no checkout). Fazemo-lo por meios justos e legais.
@@ -35,6 +35,10 @@ export default function Privacy() {
           <h2 className="text-2xl font-semibold mt-8 mb-4">2. Segurança dos Dados</h2>
           <p className="leading-relaxed text-muted-foreground mb-6">
             Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei. Nosso sistema de pagamento possui criptografia ponta a ponta.
+          </p>
+          <h2 className="text-2xl font-semibold mt-8 mb-4">3. Os Seus Direitos (RGPD)</h2>
+          <p className="leading-relaxed text-muted-foreground mb-6">
+            Ao abrigo do RGPD, assiste-lhe o direito de solicitar o acesso, retificação, apagamento e limitação do tratamento dos seus dados pessoais. Poderá também revogar o consentimento prestado para o processamento de cookies através da nossa plataforma a qualquer momento.
           </p>
         </div>
       </main>

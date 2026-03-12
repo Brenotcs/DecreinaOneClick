@@ -112,7 +112,7 @@ export function CartDrawer() {
                           <div className="flex-1">
                             <h3 className="font-semibold text-foreground">{product.name}</h3>
                             <p className="font-bold text-primary mt-1">
-                              R$ {product.price.toFixed(2).replace('.', ',')}
+                              {product.price.toFixed(2).replace('.', ',')} €
                             </p>
                           </div>
                           <div className="flex flex-col items-end justify-between">
@@ -169,7 +169,7 @@ export function CartDrawer() {
                               </Label>
                             </div>
                             <span className={`font-semibold ${option.price === 0 ? 'text-green-600' : ''}`}>
-                              {option.price === 0 ? 'Grátis' : `R$ ${option.price.toFixed(2).replace('.', ',')}`}
+                              {option.price === 0 ? 'Grátis' : `${option.price.toFixed(2).replace('.', ',')} €`}
                             </span>
                           </div>
                         );
@@ -188,17 +188,17 @@ export function CartDrawer() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Subtotal</span>
-                    <span>R$ {subtotal.toFixed(2).replace('.', ',')}</span>
+                    <span>{subtotal.toFixed(2).replace('.', ',')} €</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Frete</span>
                     <span className={getShippingCost() === 0 ? 'text-green-600' : ''}>
-                      {getShippingCost() === 0 ? 'Grátis' : `R$ ${getShippingCost().toFixed(2).replace('.', ',')}`}
+                      {getShippingCost() === 0 ? 'Grátis' : `${getShippingCost().toFixed(2).replace('.', ',')} €`}
                     </span>
                   </div>
                   <div className="flex justify-between text-lg font-bold pt-2 border-t border-border">
                     <span>Total</span>
-                    <span className="text-primary">R$ {getTotal().toFixed(2).replace('.', ',')}</span>
+                    <span className="text-primary">{getTotal().toFixed(2).replace('.', ',')} €</span>
                   </div>
                 </div>
 
@@ -236,7 +236,7 @@ function CheckoutForm({ onBack, onFinalCheckout }: { onBack: () => void; onFinal
         onClick={onFinalCheckout} // Call the new handler
         className="w-full btn-primary py-6 text-lg font-semibold rounded-full"
       >
-        Finalizar Compra • R$ {getTotal().toFixed(2).replace('.', ',')}
+        Finalizar Compra • {getTotal().toFixed(2).replace('.', ',')} €
       </Button>
       <p className="text-muted-foreground mt-4 text-sm bg-muted/50 p-3 rounded-lg">
         Você será redirecionado para o checkout.
