@@ -71,16 +71,21 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8 uppercase tracking-wider backdrop-blur-sm border border-primary/20"
         >
-          <Sparkles className="w-4 h-4" />
-          Cuidado Completo Para Seus Pés
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8 uppercase tracking-wider backdrop-blur-sm border border-primary/20 shadow-sm shadow-primary/10"
+          >
+            <Sparkles className="w-4 h-4" />
+            Cuidado Completo Para Seus Pés
+          </motion.div>
         </motion.div>
 
         <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
           className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-8 leading-[1.1] max-w-5xl tracking-tight"
         >
           A Solução <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">100% Natural</span> & Poderosa
@@ -100,11 +105,19 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center gap-3 mb-12"
+          whileHover={{ scale: 1.05 }}
+          className="flex flex-col sm:flex-row items-center gap-3 mb-12 hover:cursor-default"
         >
-          <div className="flex bg-card/50 backdrop-blur-md px-4 py-2 rounded-full border border-border/50">
+          <div className="flex bg-card/50 backdrop-blur-md px-4 py-2 rounded-full border border-border/50 shadow-sm">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-5 h-5 fill-primary text-primary drop-shadow-sm" />
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, scale: 0 }} 
+                animate={{ opacity: 1, scale: 1 }} 
+                transition={{ delay: 0.8 + (i * 0.1), type: "spring" }}
+              >
+                <Star className="w-5 h-5 fill-primary text-primary drop-shadow-sm" />
+              </motion.div>
             ))}
           </div>
           <span className="text-muted-foreground font-medium bg-background/50 backdrop-blur-sm px-4 py-2 rounded-full border border-border/50">
@@ -135,17 +148,22 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-6 mt-12 text-sm md:text-base text-foreground font-medium">
-            <div className="flex items-center gap-2 bg-background/40 backdrop-blur-md px-4 py-2 rounded-full border border-border/30">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+            className="flex flex-wrap justify-center gap-6 mt-12 text-sm md:text-base text-foreground font-medium"
+          >
+            <motion.div whileHover={{ y: -5 }} className="flex items-center gap-2 bg-background/40 backdrop-blur-md px-4 py-2 rounded-full border border-border/30 shadow-sm cursor-default">
               <ShieldCheck className="w-5 h-5 text-primary"/> 100% Natural
-            </div>
-            <div className="flex items-center gap-2 bg-background/40 backdrop-blur-md px-4 py-2 rounded-full border border-border/30">
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} transition={{ delay: 0.1 }} className="flex items-center gap-2 bg-background/40 backdrop-blur-md px-4 py-2 rounded-full border border-border/30 shadow-sm cursor-default">
               <ShieldCheck className="w-5 h-5 text-primary"/> Compra Segura
-            </div>
-            <div className="flex items-center gap-2 bg-background/40 backdrop-blur-md px-4 py-2 rounded-full border border-border/30">
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} transition={{ delay: 0.2 }} className="flex items-center gap-2 bg-background/40 backdrop-blur-md px-4 py-2 rounded-full border border-border/30 shadow-sm cursor-default">
               <ShieldCheck className="w-5 h-5 text-primary"/> Eficácia Comprovada
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
       </div>
